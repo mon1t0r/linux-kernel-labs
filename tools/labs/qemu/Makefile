@@ -60,7 +60,7 @@ gdb: $(ZIMAGE)
 	gdb -ex "target remote localhost:1234" $(KDIR)/vmlinux
 
 $(YOCTO_IMAGE):
-	wget $(YOCTO_URL)/$(YOCTO_IMAGE)
+	#wget $(YOCTO_URL)/$(YOCTO_IMAGE)
 	sudo ARCH=$(ARCH) qemu/prepare-image.sh $(YOCTO_IMAGE)
 
 lkt-tap0:
@@ -139,7 +139,8 @@ rootfs: $(YOCTO_ROOTFS)
 	echo "hvc0:12345:respawn:/sbin/getty 115200 hvc0" >> rootfs/etc/inittab
 
 $(YOCTO_ROOTFS):
-	wget $(YOCTO_URL)/$(YOCTO_ROOTFS)
+	#wget $(YOCTO_URL)/$(YOCTO_ROOTFS)
+	cp core-image-minimal-qemux86-20251008134820.rootfs.tar.bz2 $(YOCTO_ROOTFS)
 
 
 .PHONY: console gui boot gdb clean lkt-tap0 lkt-tap1 lkt-tap-smbd
