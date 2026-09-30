@@ -40,6 +40,9 @@ docker-kernel:
 stop-docker-kernel:
 	cd docker && docker-compose down
 
+com:
+	minicom -D serial.pts
+
 docs:
 	$(MAKE) -C $(KDIR) DOCBOOKS= SPHINXDIRS="teaching" htmldocs
 	$(MAKE) -C $(KDIR) BUILDDIR=$(KDIR)/Documentation/output/slides DOCBOOKS= SPHINXDIRS="teaching" slides
@@ -54,4 +57,4 @@ clean::
 clean_skels:
 	rm -rfi skels
 
-.PHONY: skels build copy docs docker-docs docker-kernel stop-docker-kernel clean clean_skels
+.PHONY: skels build copy com docs docker-docs docker-kernel stop-docker-kernel clean clean_skels
