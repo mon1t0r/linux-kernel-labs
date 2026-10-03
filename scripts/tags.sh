@@ -97,7 +97,7 @@ all_compiled_sources()
 {
 	realpath -es $([ -z "$KBUILD_ABS_SRCTREE" ] && echo --relative-to=.) \
 		include/generated/autoconf.h $(find $ignore -name "*.cmd" -exec \
-		grep -Poh '(?(?=^source_.* \K).*|(?=^  \K\S).*(?= \\))' {} \+ |
+		grep -Poh '(?(?=^source_.* ).* \K.*|^  \K\S.*(?= \\))' {} \+ |
 		awk '!a[$0]++') | sort -u
 }
 
